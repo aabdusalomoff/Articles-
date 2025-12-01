@@ -1,0 +1,329 @@
+body {
+    background: #f0f2f5;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* NAVBAR */
+.navbar {
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* HERO SECTION */
+.hero {
+    padding: 140px 20px;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    opacity: 0.85;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    max-width: 650px;
+    margin: 30px auto 60px auto;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    font-size: 1rem;
+    transition: all .3s ease;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+
+.search-bar button {
+    position: absolute;
+    right: 5px;
+    top: 4px;
+    border: none;
+    background: #6610f2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.search-bar button:hover {
+    background: #4b6cb7;
+}
+
+/* ARTICLE CARDS */
+.article-card {
+    border-radius: 20px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: .5s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.article-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.article-card img[data-loading] {
+    filter: blur(10px);
+    transition: filter .5s ease-out;
+}
+
+.article-card img.loaded {
+    filter: blur(0);
+}
+
+.card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body h4 {
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.card-body p {
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+/* CATEGORY BADGE */
+.badge-category {
+    background: #6610f2;
+    color: white;
+    font-size: .75rem;
+    padding: .35rem .75rem;
+    border-radius: .5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    white-space: nowrap;  
+}
+
+/* FOOTER */
+footer {
+    margin-top: 80px;
+    padding: 35px 0;
+    text-align: center;
+    color: #6c757d;
+    background: #fff;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* LOADING SKELETON */
+.loading-placeholder {
+    background: linear-gradient(90deg, #f0f2f5 25%, #e0e3e8 50%, #f0f2f5 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 15px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ARTICLE DETAIL PAGE */
+.article-image {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    margin-bottom: 30px;
+}
+
+.article-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.article-content h2 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.article-content p {
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    background: #6610f2;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-back:hover {
+    background: #4b4bb7;
+}
+
+/* FILTER BAR */
+.filter-bar {
+    margin: 30px 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: none;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: #e0e3e8;
+    cursor: pointer;
+    transition: .3s;
+    text-decoration: none;
+    color: black;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #6610f2;
+    color: white;
+}
+
+/* PAGINATION */
+.pagination {
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    border-radius: 50px;
+    padding: 8px 16px;
+    border: 1px solid #e0e3e8;
+    transition: .3s;
+}
+
+.pagination .page-link:hover,
+.pagination .active .page-link {
+    background: #6610f2;
+    border-color: #6610f2;
+    color: white;
+}
+
+/* FORMS */
+.container-form,
+.login-container,
+.register-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    margin: 50px auto 80px auto;
+}
+
+.container-form { max-width: 800px; }
+.login-container { max-width: 400px; margin-top: 100px; }
+.register-container { max-width: 450px; margin-top: 80px; }
+
+.container-form h2,
+.login-container h2,
+.register-container h2 {
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 10px rgba(102, 16, 242, 0.5);
+    border-color: #6610f2;
+}
+
+.btn-submit,
+.btn-login,
+.btn-register {
+    background: #6610f2;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    transition: .3s;
+    width: 100%;
+}
+
+.btn-submit:hover,
+.btn-login:hover,
+.btn-register:hover {
+    background: #4b6cb7;
+}
+
+.text-center a {
+    color: #6610f2;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}

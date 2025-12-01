@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container">
+    <h1>MiniWiki</h1>
+    <p>Bilimlarni tez va chiroyli toping, zamonaviy maqolalarni o‘rganing</p>
+  </div>
+</section>
+
+<div class="search-bar">
+  <input type="text" placeholder="Qidirish...">
+  <button><i class="fas fa-search"></i></button>
+</div>
+
+<section class="container" id="articles">
+  <h3 class="mb-4 fw-bold">So‘nggi maqolalar</h3>
+  <div class="row g-4">
+
+    {% for article in articles %}
+
+    <div class="col-md-4">
+      <div class="card article-card">
+        <img src="{{ article.image.url }}" alt="Image" >
+        <div class="card-body">
+          <span class="badge-category">{{ article.category.name}}</span>
+          <h4>{{article.title}}</h4>
+          <p>{{article.description | slice:":100"}}</p>
+          <a href="detail.html" class="text-primary fw-bold">Batafsil →</a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

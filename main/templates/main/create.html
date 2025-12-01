@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="container container-form">
+  <h2>Maqola qo'shish</h2>
+  <form action="{% url 'create' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="text" class="form-control" placeholder="Maqola sarlavhasi" required name="title">
+
+    <select class="form-select" required name="category">
+      <option value="">Kategoriya tanlang</option>
+      {% for category in categories %}
+      <option value="{{category.id}}">{{category.name}}</option>
+      {% endfor %}
+    </select>
+
+    <input type="file" class="form-control" accept="image/*" name="image">
+    <textarea class="form-control" rows="10" placeholder="Maqola matni" required name="description"></textarea>
+    <div class="text-center">
+      <a href="{% url 'home' %}"><button type="submit" class="btn btn-danger">Cancel</button></a>
+      <button type="submit" class="btn btn-success">Maqolani qo'shish</button>
+    </div>
+  </form>
+</section>
+
+{% endblock %}
