@@ -28,9 +28,9 @@
 
 <section class="login-container">
   <h2>Kirish</h2>
-  <form>
-    <input type="text" class="form-control" placeholder="Foydalanuvchi nomi" required>
-    <input type="password" class="form-control" placeholder="Parol" required>
+  <form action="{% url 'login' %}" method="post"> {% csrf_token %}
+    <input type="text" class="form-control" placeholder="Foydalanuvchi nomi" required name="username">
+    <input type="password" class="form-control" placeholder="Parol" required name="password">
     <button type="submit" class="btn btn-login">Kirish</button>
     <p class="text-center mt-3">Hisobingiz yo'qmi? <a href="register.html">Ro'yxatdan o'tish</a></p>
   </form>

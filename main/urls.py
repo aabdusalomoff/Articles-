@@ -6,4 +6,5 @@ urlpatterns = [
     path('',views.Home.as_view(),name = 'home'),
     path('articles/',views.ArticleView.as_view(), name='articles'),
     path('create/',views.ArticleCreate.as_view(),name='create'),
+    path('login/',views.LoginView.as_view(),name='login'),
 ]

@@ -13,7 +13,7 @@
 
   <!-- Filter -->
   <div class="filter-bar">
-    <a href="?category=all" class="filter-btn active">Barchasi</a>
+    <a href="{% url 'articles' %}" class="filter-btn active">Barchasi</a>
     <a href="?category=Texnologiya" class="filter-btn">Texnologiya</a>
     <a href="?category=Web" class="filter-btn">Web</a>
     <a href="?category=Design" class="filter-btn">Design</a>
@@ -23,32 +23,46 @@
 
   <!-- Articles -->
   <div class="row g-4">
+    {% for article in articles %}
     <!-- Article cards (6 example cards) -->
     <div class="col-md-4 d-flex">
       <div class="card article-card w-100">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="AI">
+        <img src="{{ article.image.url }}" alt="AI">
         <div class="card-body">
           <div>
-            <span class="badge-category mb-2">Texnologiya</span>
-            <h4>Sun'iy intellekt</h4>
-            <p>AI texnologiyalari va zamonaviy ilovalari haqida batafsil ma’lumot.</p>
+            <span class="badge-category mb-2">{{ article.category.name }}</span>
+            <h4>{{ article.title }}</h4>
+            <p>{{ article.description |slice:":100"}}</p>
           </div>
           <a href="detail.html" class="text-primary fw-bold mt-3">Batafsil →</a>
         </div>
       </div>
     </div>
+    {% endfor %}
     <!-- Shu tarzda boshqa 5 ta maqola kartalari ham bir xil o'lchamda qo‘shilishi mumkin -->
   </div>
 
   <!-- Pagination -->
   <nav aria-label="Page navigation">
+    {% if articles.has_other_pages %}
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="?page=1">«</a></li>
-      <li class="page-item active"><a class="page-link" href="?page=1">1</a></li>
-      <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-      <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-      <li class="page-item"><a class="page-link" href="?page=2">»</a></li>
+      {% if articles.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">«</a></li>
+      {% endif %}
+      {% for page in articles.paginator.page_range %}
+      {% if articles.number == page %}
+      <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+      {% endif %}
+
+      
+      {% endfor %}
+      {% if articles.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">»</a></li>
+      {% endif %}
     </ul>
+    {% endif %}
   </nav>
 </section>
 

@@ -6,9 +6,14 @@
 
 <section class="container container-form">
   <h2>Maqola qo'shish</h2>
+
   <form action="{% url 'create' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
     <input type="text" class="form-control" placeholder="Maqola sarlavhasi" required name="title">
-
+    {% if form.errors.title %}
+    {% for error in form.errors.title %}
+    <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+    {% endif%}
     <select class="form-select" required name="category">
       <option value="">Kategoriya tanlang</option>
       {% for category in categories %}
@@ -18,6 +23,11 @@
 
     <input type="file" class="form-control" accept="image/*" name="image">
     <textarea class="form-control" rows="10" placeholder="Maqola matni" required name="description"></textarea>
+    {% if form.errors.description %}
+    {% for error in form.errors.description %}
+    <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+    {% endif%}
     <div class="text-center">
       <a href="{% url 'home' %}"><button type="submit" class="btn btn-danger">Cancel</button></a>
       <button type="submit" class="btn btn-success">Maqolani qo'shish</button>
